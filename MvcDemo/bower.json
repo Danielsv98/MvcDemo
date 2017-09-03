@@ -10,6 +10,7 @@
     "popper.js": "1.12.3",
     "tether": "1.4.0",
     "knockout": "^3.4.2",
-    "knockout-mapping": "^2.4.1"
+    "knockout-mapping": "^2.4.1",
+    "moment": "^2.18.1"
   }
 }

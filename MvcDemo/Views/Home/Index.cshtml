@@ -126,7 +126,7 @@
 					<a data-bind="text: name, attr: { href: html_url }" target="_blank"></a>
 				</td>
 				<td data-bind="text: owner.login"></td>
-				<td data-bind="text: updated_at"></td>
+				<td data-bind="text: moment(updated_at).format('L')"></td>
 			</tr>
 		</tbody>
 	</table>

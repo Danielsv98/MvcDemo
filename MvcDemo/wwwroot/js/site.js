@@ -4,7 +4,6 @@
 	loadStackOverflowUsers();
 	loadGithubRepositories();
 
-
 	// View Models
 	function WidgetViewModel() {
 		this.items = [];
