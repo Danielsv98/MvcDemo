@@ -1,49 +1,29 @@
 ﻿$(function () {
 	// Initializations
-	loadStackOverflowAnswers();
+	loadStackOverflowQuestions();
 	loadStackOverflowUsers();
 
+
+	// View Models
+	function WidgetViewModel() {
+		this.items = [];
+	}
+
 	// Private Methods
-	function loadStackOverflowAnswers() {
+	function loadStackOverflowQuestions() {
 		$.ajax({
 			url: "https://api.stackexchange.com/2.2/questions?page=1&pagesize=5&order=desc&sort=hot&site=stackoverflow",
 			type: "GET",
 			dataType: "json",
 			cache: false,
 			success: function (data) {
-				console.log(data);
-				var table = $('<table></table>');
-				table.addClass('table table-striped');
-				var header = $('<thead></thead>');
-				var headerRow = $('<tr></tr>');
-				headerRow.append('<th>Title</th>');
-				headerRow.append('<th>Answers</th>');
-				header.html(headerRow);
-				table.append(header);
-				var body = $('<tbody></tbody>');
-				table.append(body);
+				var widgetViewModel = new WidgetViewModel();
 				if (data != null && data.items != null) {
-					$.each(data.items, function (index, item) {
-						var row = $('<tr></tr>');
-
-						var colTitle = $('<td></td>');
-						var link = $('<a></a>');
-						link.addClass('ellipse');
-						link.html(item.title);
-						link.attr('href', item.link);
-						link.attr('target', '_blank');
-						colTitle.append(link);
-
-						var colAnswers = $('<td></td>');
-						colAnswers.append(item.answer_count);
-
-						row.append(colTitle);
-						row.append(colAnswers);
-
-						body.append(row);
-					});
+					widgetViewModel.items = data.items;
 				}
-				$('#so_questions .card-block').html(table);
+
+				var widget = $('#so_questions');
+				ko.applyBindings(widgetViewModel, widget[0]);
 			},
 			error: function () {
 				alert('Error');
@@ -58,7 +38,6 @@
 			dataType: "json",
 			cache: false,
 			success: function (data) {
-				console.log(data);
 				var table = $('<table></table>');
 				table.addClass('table table-striped');
 				var header = $('<thead></thead>');
