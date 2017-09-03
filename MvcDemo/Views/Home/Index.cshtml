@@ -6,7 +6,7 @@
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
 		<div class="widget card" id="so_questions">
 			<div class="card-header">
-				Stack Overflow Questions
+				Stack Overflow Hot Questions
 			</div>
 			<div class="card-block" data-bind="template: { name: 'so-questions-template' }">
 				<img class="loading" src="~/images/loading.gif" alt="Loading" />
@@ -18,7 +18,7 @@
 			<div class="card-header">
 				Stack Overflow Top Users
 			</div>
-			<div class="card-block">
+			<div class="card-block" data-bind="template: { name: 'so-users-template' }">
 				<img class="loading" src="~/images/loading.gif" alt="Loading" />
 			</div>
 		</div>
@@ -27,11 +27,11 @@
 <div class="row">
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
 		@* News Module *@
-		<div class="widget card">
+		<div class="widget card" id="gh_repos">
 			<div class="card-header">
-				Quote
+				GitHub Repositories
 			</div>
-			<div class="card-block">
+			<div class="card-block" data-bind="template: { name: 'gh-repos-template' }">
 				<img class="loading" src="~/images/loading.gif" alt="Loading" />
 			</div>
 		</div>
@@ -77,16 +77,56 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Title</th>
-				<th>Answers</th>
+				<th style="width: 85%">Title</th>
+				<th style="width: 15%">Answers</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: items">
+			<tr>
+				<td class="ellipse">
+					<a  data-bind="text: title, attr: { href: link }" target="_blank"></a>
+				</td>
+				<td data-bind="text: answer_count"></td>
+			</tr>
+		</tbody>
+	</table>
+</script>
+
+<script type="text/html" id="so-users-template">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>User Name</th>
+				<th>Reputation</th>
 			</tr>
 		</thead>
 		<tbody data-bind="foreach: items">
 			<tr>
 				<td>
-					<a  data-bind="text: title, attr: { href: link }" class="ellipse" target="_blank"></a>
+					<a data-bind="text: display_name, attr: { href: link }" target="_blank"></a>
 				</td>
-				<td data-bind="text: answer_count"></td>
+				<td data-bind="text: reputation"></td>
+			</tr>
+		</tbody>
+	</table>
+</script>
+
+<script type="text/html" id="gh-repos-template">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th style="width: 30%">Name</th>
+				<th>Owner</th>
+				<th>Last Updated</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: items">
+			<tr>
+				<td class="ellipse">
+					<a data-bind="text: name, attr: { href: html_url }" target="_blank"></a>
+				</td>
+				<td data-bind="text: owner.login"></td>
+				<td data-bind="text: updated_at"></td>
 			</tr>
 		</tbody>
 	</table>

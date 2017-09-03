@@ -2,6 +2,7 @@
 	// Initializations
 	loadStackOverflowQuestions();
 	loadStackOverflowUsers();
+	loadGithubRepositories();
 
 
 	// View Models
@@ -38,42 +39,40 @@
 			dataType: "json",
 			cache: false,
 			success: function (data) {
-				var table = $('<table></table>');
-				table.addClass('table table-striped');
-				var header = $('<thead></thead>');
-				var headerRow = $('<tr></tr>');
-				headerRow.append('<th>User Name</th>');
-				headerRow.append('<th>Reputation</th>');
-				header.html(headerRow);
-				table.append(header);
-				var body = $('<tbody></tbody>');
-				table.append(body);
+				var widgetViewModel = new WidgetViewModel();
 				if (data != null && data.items != null) {
-					$.each(data.items, function (index, item) {
-						var row = $('<tr></tr>');
-
-						var colName = $('<td></td>');
-						var userlink = $('<a></a>');
-						userlink.addClass('ellipse');
-						userlink.html(item.display_name);
-						userlink.attr('href', item.link);
-						userlink.attr('target', '_blank');
-						colName.append(userlink);
-
-						var colReputation = $('<td></td>');
-						colReputation.append(item.reputation);
-
-						row.append(colName);
-						row.append(colReputation);
-
-						body.append(row);
-					});
+					widgetViewModel.items = data.items;
 				}
-				$('#so_users .card-block').html(table);
+
+				var widget = $('#so_users');
+				ko.applyBindings(widgetViewModel, widget[0]);
 			},
 			error: function () {
 				alert('Error');
 			}
 		});
 	}
+
+	function loadGithubRepositories() {
+		$.ajax({
+			url: "https://api.github.com/users/Danielsv98/repos",
+			type: "GET",
+			dataType: "json",
+			cache: false,
+			success: function (items) {
+				var widgetViewModel = new WidgetViewModel();
+				if (items != null) {
+					widgetViewModel.items = items;
+				}
+
+				var widget = $('#gh_repos');
+				ko.applyBindings(widgetViewModel, widget[0]);
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	}
+
+
 });

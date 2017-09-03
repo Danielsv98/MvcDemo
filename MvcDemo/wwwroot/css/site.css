@@ -67,11 +67,8 @@
 
 .widget table {
 	margin-bottom: 0;
-}
-
-.widget a {
-	width: 400px;
-}
+	table-layout: fixed;
+}	
 
 /* Footer */
 .footer {
