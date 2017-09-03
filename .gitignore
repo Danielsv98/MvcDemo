@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/MvcDemo/bin
+/MvcDemo/obj
+/MvcDemo/wwwroot/lib
+/MvcDemo/MvcDemo.csproj.user

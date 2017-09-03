@@ -1,0 +1,135 @@
+﻿/* Navbar */
+.navbar {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	width: 100%;
+	top: 0;
+	z-index: 10;
+	background-color: #77cc6d;
+	background: linear-gradient(#16d21a, #4a4a3e);
+	box-shadow: 8px 8px 6px -6px #999;
+	padding: 0;
+	height: 50px;
+}
+
+.navbar-brand {
+	margin-right: 1rem;
+	margin-left: 1rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: #f7f7f9;
+	display: block;
+	padding: 0 12px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+
+.nav-item.active {
+	background-color: #66ab5e;
+	background: linear-gradient(red, yellow);
+	box-shadow: inset 0px 0px 1px 1px #000000;
+}
+
+/* Body */
+.body-content {
+	margin-top: 20px;
+	padding-bottom: 10px;
+}
+
+/* Cards */
+.card {
+	box-shadow: 8px 8px 6px -6px #999;
+	border: 1px solid rgba(150, 125, 125, 0.59);
+}
+
+.card-header {
+	color: #fff;
+	background-color: #77cc6d;
+	background: linear-gradient(#16d21a, #4a4a3e);
+	border-bottom: 1px solid rgb(71, 80, 60);
+}
+
+
+/* Widget */
+.widget .card-block {
+	padding: 0;
+	height: 295px;
+}
+
+	.widget .card-block img.loading {
+		height: 100px;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 85px;
+	}
+
+.widget table {
+	margin-bottom: 0;
+}
+
+.widget a {
+	width: 400px;
+}
+
+/* Footer */
+.footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	background-color: #f5f5f5;
+}
+
+	.footer .container {
+		width: auto;
+		max-width: 680px;
+		padding: 0 15px;
+	}
+
+/* Form */
+.required label::after {
+	content: "*";
+	color: #FF0000;
+	margin-left: 3px;
+}
+
+fieldset {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	background-color: #f1f1f1;
+	padding: 0.01em 16px;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+	border: 1px solid rgba(0, 0, 0, 0.17);
+}
+
+.btn-success {
+	background: linear-gradient(#16d21a, #4a4a3e);
+	margin-bottom: 20px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Validation */
+.form-control-feedback {
+	display: none;
+}
+
+.input-validation-error {
+	border-color: #FF0000;
+}
+
+.field-validation-error {
+	display: block;
+	color: #FF0000;
+}
+
+/* Helpers */
+.ellipse {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
