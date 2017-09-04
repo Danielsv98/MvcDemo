@@ -40,6 +40,12 @@
 			success: function (data) {
 				var widgetViewModel = new WidgetViewModel();
 				if (data != null && data.items != null) {
+					$.each(data.items, function (index, item) {
+						if (item.age === undefined) {
+							item.age = '--';
+						}
+					});
+
 					widgetViewModel.items = data.items;
 				}
 
