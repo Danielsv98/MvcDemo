@@ -4,8 +4,8 @@
 	width: 100%;
 	top: 0;
 	z-index: 10;
-	background-color: #77cc6d;
-	background: linear-gradient(#16d21a, #4a4a3e);
+	background-color: #5bc0de;
+	background: linear-gradient(rgb(91, 192, 222), #bff0ff);
 	box-shadow: 8px 8px 6px -6px #999;
 	padding: 0;
 	height: 50px;
@@ -26,9 +26,15 @@
 }
 
 .nav-item.active {
-	background-color: #66ab5e;
-	background: linear-gradient(red, yellow);
-	box-shadow: inset 0px 0px 1px 1px #000000;
+	background-color: #a2dbec;
+	background: linear-gradient(rgb(115, 203, 230), rgb(243, 247, 247));
+	box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.collapse.show {
+	display: block;
+	background-color: #1194bb;
+	box-shadow: 8px 8px 6px -6px #999;
 }
 
 /* Body */
@@ -44,10 +50,11 @@
 }
 
 .card-header {
-	color: #fff;
-	background-color: #77cc6d;
-	background: linear-gradient(#16d21a, #4a4a3e);
-	border-bottom: 1px solid rgb(71, 80, 60);
+	color: #000000;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	background-color: #5bc0de;
+	background: linear-gradient(rgb(91, 192, 222), #bff0ff);
+	border-bottom: 1px solid rgb(190, 208, 169);
 }
 
 
@@ -68,7 +75,60 @@
 .widget table {
 	margin-bottom: 0;
 	table-layout: fixed;
-}	
+}
+
+
+.ED_Answer_Title {
+	width: 20%;
+	text-align: center;
+}
+.ED_answer_count {
+	text-align: center;
+}
+
+.ED_Users_Age {
+	width: 20%;
+	text-align: center;
+}
+
+.ED_Users_Reputation {
+	text-align: center;
+}
+
+@media (max-width: 990px) {
+	.ED_Answer_Title {
+		width: 25%;
+		text-align: center;
+	}
+	.ED_answer_count {
+		text-align: center;
+	}
+}
+
+@media (max-width: 450px) {
+
+	.ED_Answer_Title {
+		width: 35%;
+		text-align: center;
+	}
+	.ED_answer_count {
+		text-align: center;
+	}
+}
+
+@media (max-width: 350px) {
+
+	.table th, .table td {
+		padding: 0rem;
+	}
+	.ED_Answer_Title {
+		width: 28%;
+		text-align: center;
+	}
+	.ED_answer_count {
+		text-align: center;
+	}
+}
 
 /* Footer */
 .footer {
@@ -102,7 +162,6 @@ fieldset {
 }
 
 .btn-success {
-	background: linear-gradient(#16d21a, #4a4a3e);
 	margin-bottom: 20px;
 	display: block;
 	margin-left: auto;

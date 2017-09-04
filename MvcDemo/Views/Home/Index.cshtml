@@ -26,7 +26,6 @@
 </div>
 <div class="row">
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
-		@* News Module *@
 		<div class="widget card" id="gh_repos">
 			<div class="card-header">
 				GitHub Repositories
@@ -37,7 +36,6 @@
 		</div>
 	</div>
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
-		@* Q&A Module *@
 		<div class="widget card">
 			<div class="card-header">
 				Quote
@@ -50,7 +48,6 @@
 </div>
 <div class="row">
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
-		@* News Module *@
 		<div class="widget card">
 			<div class="card-header">
 				Quote
@@ -61,7 +58,6 @@
 		</div>
 	</div>
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
-		@* Q&A Module *@
 		<div class="widget card">
 			<div class="card-header">
 				Quote
@@ -73,12 +69,14 @@
 	</div>
 </div>
 
+@* Tables for Knockout *@
+
 <script type="text/html" id="so-questions-template">
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th style="width: 85%">Title</th>
-				<th style="width: 15%">Answers</th>
+				<th>Title</th>
+				<th class="ED_Answer_Title">Answers</th>
 			</tr>
 		</thead>
 		<tbody data-bind="foreach: items">
@@ -86,7 +84,7 @@
 				<td class="ellipse">
 					<a  data-bind="text: title, attr: { href: link }" target="_blank"></a>
 				</td>
-				<td data-bind="text: answer_count"></td>
+				<td class="ED_answer_count"data-bind="text: answer_count"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -97,15 +95,17 @@
 		<thead>
 			<tr>
 				<th>User Name</th>
-				<th>Reputation</th>
+				<th class="ED_Users_Age">Age</th>
+				<th class="ED_Users_Reputation">Reputation</th>
 			</tr>
 		</thead>
 		<tbody data-bind="foreach: items">
 			<tr>
-				<td>
+				<td class="ellipse">
 					<a data-bind="text: display_name, attr: { href: link }" target="_blank"></a>
 				</td>
-				<td data-bind="text: reputation"></td>
+				<td class="ED_Users_Age" data-bind="text: age"></td>
+				<td class="ED_Users_Reputation" data-bind="text: reputation"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -115,7 +115,7 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th style="width: 30%">Name</th>
+				<th>Name</th>
 				<th>Owner</th>
 				<th>Last Updated</th>
 			</tr>
