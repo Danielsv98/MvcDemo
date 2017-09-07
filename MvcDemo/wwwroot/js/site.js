@@ -1,8 +1,8 @@
 ﻿$(function () {
 	// Initializations
-	loadStackOverflowQuestions();
-	loadStackOverflowUsers();
-	loadGithubRepositories();
+	getWidgetSettings(1, loadStackOverflowQuestions);
+	getWidgetSettings(2, loadStackOverflowUsers);
+	getWidgetSettings(3, loadGithubRepositories);
 
 	// View Models
 	function WidgetViewModel() {
@@ -10,9 +10,17 @@
 	}
 
 	// Private Methods
-	function loadStackOverflowQuestions() {
+	function loadStackOverflowQuestions(settings) {
+
+		var url = "https://api.stackexchange.com/2.2/questions?page=1&pagesize=5&site=stackoverflow";
+
+		if (settings != null) {
+			for (var i = 0; i < settings.length; i++)
+				url += "&" + settings[i].settingName + "=" + settings[i].settingValue;
+		}
+
 		$.ajax({
-			url: "https://api.stackexchange.com/2.2/questions?page=1&pagesize=5&order=desc&sort=hot&site=stackoverflow",
+			url: url,
 			type: "GET",
 			dataType: "json",
 			cache: false,
@@ -31,7 +39,7 @@
 		});
 	}
 
-	function loadStackOverflowUsers() {
+	function loadStackOverflowUsers(settings) {
 		$.ajax({
 			url: "https://api.stackexchange.com/2.2/users?page=1&pagesize=5&order=desc&sort=reputation&site=stackoverflow",
 			type: "GET",
@@ -58,7 +66,7 @@
 		});
 	}
 
-	function loadGithubRepositories() {
+	function loadGithubRepositories(settings) {
 		$.ajax({
 			url: "https://api.github.com/users/Danielsv98/repos",
 			type: "GET",
@@ -72,6 +80,21 @@
 
 				var widget = $('#gh_repos');
 				ko.applyBindings(widgetViewModel, widget[0]);
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	}
+
+	function getWidgetSettings(widgetId, callback) {
+		$.ajax({
+			url: "http://localhost:59634/api/widget/" + widgetId + "/settings",
+			type: "GET",
+			dataType: "json",
+			cache: false,
+			success: function (settings) {
+				callback(settings);
 			},
 			error: function () {
 				alert('Error');
