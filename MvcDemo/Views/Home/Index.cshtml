@@ -5,13 +5,12 @@
 <div class="row">
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
 		<div class="widget card" id="so_questions">
-			<div class="d-flex justify-content-between">
 				<div class="card-header">
 					Stack Overflow Questions
-				</div>
-				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Widget1Modal">
-					<img src="~/images/engineering.png" width="30" height="30" alt="properties">
-				</button>	
+					<a class="widget-icon" href="#" data-toggle="modal" data-target="#Widget1Modal">
+						<img src="~/images/engineering.png" alt="settings">
+					</a>
+				</div>	
 				@* Modal Buttom *@
 				<div class="modal fade" id="Widget1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
@@ -41,7 +40,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
 			<div class="card-block" data-bind="template: { name: 'so-questions-template' }">
 				<img class="loading" src="~/images/loading.gif" alt="Loading" />
 			</div>
@@ -49,14 +47,12 @@
 	</div>
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
 		<div class="widget card" id="so_users">
-			<div class="d-flex justify-content-between">
-				<div class="card-header">
-					Stack Overflow Users
-				</div>
-				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-					<img src="~/images/engineering.png" width="30" height="30" alt="properties">
-				</button>
-			</div>
+			<div class="card-header">
+				Stack Overflow Users
+				<a class="widget-icon" href="#" data-toggle="modal" data-target="#Widget1Modal">
+					<img src="~/images/engineering.png" alt="settings">
+				</a>
+			</div>	
 			<div class="card-block" data-bind="template: { name: 'so-users-template' }">
 				<img class="loading" src="~/images/loading.gif" alt="Loading" />
 			</div>
@@ -66,14 +62,12 @@
 <div class="row">
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
 		<div class="widget card" id="gh_repos">
-			<div class="d-flex justify-content-between">
-				<div class="card-header">
-					GitHub Repositories
-				</div>
-				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-					<img src="~/images/engineering.png" width="30" height="30" alt="properties">
-				</button>
-			</div>
+			<div class="card-header">
+				GitHub Repositories
+				<a class="widget-icon" href="#" data-toggle="modal" data-target="#Widget1Modal">
+					<img src="~/images/engineering.png" alt="settings">
+				</a>
+			</div>	
 			<div class="card-block" data-bind="template: { name: 'gh-repos-template' }">
 				<img class="loading" src="~/images/loading.gif" alt="Loading" />
 			</div>

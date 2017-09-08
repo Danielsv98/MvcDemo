@@ -49,25 +49,23 @@
 	border: 1px solid rgba(150, 125, 125, 0.59);
 }
 
-.widget .d-flex {
-	color: #000000;
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	background-color: #5bc0de;
-	background: linear-gradient(rgb(91, 192, 222), #bff0ff);
-	border-top-right-radius: 0.20rem;
-	border-top-left-radius: 0.20rem;
-}
-
 .widget .card-header {
+	font-family: Georgia, 'Times New Roman', Times, serif;
 	background: linear-gradient(rgb(91, 192, 222), #bff0ff);
-	border-bottom: unset;
 	border-top-right-radius: 0.20rem;
 	border-top-left-radius: 0.20rem;
 }
 
-	.widget button {
-		border-radius: 0;
-		border-top-right-radius: 0.20rem;
+	.widget .card-header .widget-icon {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 8.5px;
+	}
+
+	.widget .card-header .widget-icon img {
+		width: 30px;
+		height: 30px;
 	}
 
 .widget .card-block {
