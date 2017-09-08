@@ -17,7 +17,7 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-	color: #f7f7f9;
+	color: #000000;
 	display: block;
 	padding: 0 12px;
 	height: 50px;
@@ -43,22 +43,33 @@
 	padding-bottom: 10px;
 }
 
-/* Cards */
+/* Widget */
 .card {
 	box-shadow: 8px 8px 6px -6px #999;
 	border: 1px solid rgba(150, 125, 125, 0.59);
 }
 
-.card-header {
+.widget .d-flex {
 	color: #000000;
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	background-color: #5bc0de;
 	background: linear-gradient(rgb(91, 192, 222), #bff0ff);
-	border-bottom: 1px solid rgb(190, 208, 169);
+	border-top-right-radius: 0.20rem;
+	border-top-left-radius: 0.20rem;
 }
 
+.widget .card-header {
+	background: linear-gradient(rgb(91, 192, 222), #bff0ff);
+	border-bottom: unset;
+	border-top-right-radius: 0.20rem;
+	border-top-left-radius: 0.20rem;
+}
 
-/* Widget */
+	.widget button {
+		border-radius: 0;
+		border-top-right-radius: 0.20rem;
+	}
+
 .widget .card-block {
 	padding: 0;
 	height: 295px;
@@ -77,12 +88,18 @@
 	table-layout: fixed;
 }
 
+.widget .card-header .btn-primary {
+	background-color: #5d5cff;
+	border-color: unset;
+}
+
 
 .ED_Answer_Title {
 	width: 20%;
 	text-align: center;
 }
-.ED_answer_count {
+
+.ED_Answer_Count {
 	text-align: center;
 }
 
@@ -100,7 +117,7 @@
 		width: 25%;
 		text-align: center;
 	}
-	.ED_answer_count {
+	.ED_Answer_Count {
 		text-align: center;
 	}
 }
@@ -118,9 +135,6 @@
 
 @media (max-width: 350px) {
 
-	.table th, .table td {
-		padding: 0rem;
-	}
 	.ED_Answer_Title {
 		width: 28%;
 		text-align: center;
@@ -161,7 +175,7 @@ fieldset {
 	border: 1px solid rgba(0, 0, 0, 0.17);
 }
 
-.btn-success {
+fieldset .btn-primary {
 	margin-bottom: 20px;
 	display: block;
 	margin-left: auto;

@@ -5,8 +5,42 @@
 <div class="row">
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
 		<div class="widget card" id="so_questions">
-			<div class="card-header">
-				Stack Overflow Hot Questions
+			<div class="d-flex justify-content-between">
+				<div class="card-header">
+					Stack Overflow Questions
+				</div>
+				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Widget1Modal">
+					<img src="~/images/engineering.png" width="30" height="30" alt="properties">
+				</button>	
+				@* Modal Buttom *@
+				<div class="modal fade" id="Widget1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+								<div class="modal-body">
+									<form>
+										<div class="form-group">
+											<label for="txtCompany">Company</label>
+											<input type="text" class="form-control" id="txtCompany" placeholder="Company"/>
+										</div>
+										<div class="form-group required">
+											<label for="txtEmail">Email Address</label>
+											<input type="text" class="form-control" id="txtEmail" placeholder="Email@example.com" />
+										</div>
+									</form>
+								</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary">Save changes</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="card-block" data-bind="template: { name: 'so-questions-template' }">
 				<img class="loading" src="~/images/loading.gif" alt="Loading" />
@@ -15,8 +49,13 @@
 	</div>
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
 		<div class="widget card" id="so_users">
-			<div class="card-header">
-				Stack Overflow Top Users
+			<div class="d-flex justify-content-between">
+				<div class="card-header">
+					Stack Overflow Users
+				</div>
+				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+					<img src="~/images/engineering.png" width="30" height="30" alt="properties">
+				</button>
 			</div>
 			<div class="card-block" data-bind="template: { name: 'so-users-template' }">
 				<img class="loading" src="~/images/loading.gif" alt="Loading" />
@@ -27,8 +66,13 @@
 <div class="row">
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
 		<div class="widget card" id="gh_repos">
-			<div class="card-header">
-				GitHub Repositories
+			<div class="d-flex justify-content-between">
+				<div class="card-header">
+					GitHub Repositories
+				</div>
+				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+					<img src="~/images/engineering.png" width="30" height="30" alt="properties">
+				</button>
 			</div>
 			<div class="card-block" data-bind="template: { name: 'gh-repos-template' }">
 				<img class="loading" src="~/images/loading.gif" alt="Loading" />
@@ -84,7 +128,7 @@
 				<td class="ellipse">
 					<a  data-bind="text: title, attr: { href: link }" target="_blank"></a>
 				</td>
-				<td class="ED_answer_count"data-bind="text: answer_count"></td>
+				<td class="ED_Answer_Count" data-bind="text: answer_count"></td>
 			</tr>
 		</tbody>
 	</table>
