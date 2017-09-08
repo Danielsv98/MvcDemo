@@ -27,7 +27,6 @@
     <Folder Include="Data\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,65 @@
+﻿<div class="widget card" id="so_users">
+	<div class="card-header">
+		Stack Overflow Users
+		<a class="widget-icon" href="#" data-toggle="modal" data-target="#Widget1Modal">
+			<img src="~/images/engineering.png" alt="settings">
+		</a>
+	</div>
+	<div class="card-block" data-bind="template: { name: 'so-users-template' }">
+		<img class="loading" src="~/images/loading.gif" alt="Loading" />
+	</div>
+</div>
+
+@* Settings Modal *@
+
+<div class="modal fade" id="Widget1Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="txtCompany">Company</label>
+						<input type="text" class="form-control" id="txtCompany" placeholder="Company" />
+					</div>
+					<div class="form-group required">
+						<label for="txtEmail">Email Address</label>
+						<input type="text" class="form-control" id="txtEmail" placeholder="Email@example.com" />
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+@* Template *@
+
+<script type="text/html" id="so-users-template">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>User Name</th>
+				<th class="ED_Users_Age">Age</th>
+				<th class="ED_Users_Reputation">Reputation</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: items">
+			<tr>
+				<td class="ellipse">
+					<a data-bind="text: display_name, attr: { href: link }" target="_blank"></a>
+				</td>
+				<td class="ED_Users_Age" data-bind="text: age"></td>
+				<td class="ED_Users_Reputation" data-bind="text: reputation"></td>
+			</tr>
+		</tbody>
+	</table>
+</script>

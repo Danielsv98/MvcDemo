@@ -1,0 +1,78 @@
+﻿<div class="widget card" id="so_questions">
+	<div class="card-header">
+		Stack Overflow Questions
+		<a class="widget-icon" href="#" data-toggle="modal" data-target="#so-questions-modal">
+			<img src="~/images/engineering.png" alt="settings">
+		</a>
+	</div>
+	<div class="card-block" data-bind="template: { name: 'so-questions-template' }">
+		<img class="loading" src="~/images/loading.gif" alt="Loading" />
+	</div>
+</div>
+
+@* Settings Modal *@
+<div class="modal fade" id="so-questions-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="selCategory">Category</label>
+						<select id="selCategory" class="form-control">
+							<option selected></option>
+							<option value="votes">Votes</option>
+							<option value="creation">Creation</option>
+							<option value="hot">Hot</option>
+							<option value="week">Week</option>
+							<option value="month">Month</option>
+							<option value="activity">Activity</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Order</label>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="radio" class="form-check-input" name="order" id="optionsRadios1" value="desc" checked>
+								Descendant
+							</label>
+							<label class="form-check-label ml-3">
+								<input type="radio" class="form-check-input" name="order" id="optionsRadios2" value="asc">
+								Ascendant
+							</label>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+@* Template *@
+<script type="text/html" id="so-questions-template">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th class="ED_Answer_Title">Answers</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: items">
+			<tr>
+				<td class="ellipse">
+					<a data-bind="text: title, attr: { href: link }" target="_blank"></a>
+				</td>
+				<td class="ED_Answer_Count" data-bind="text: answer_count"></td>
+			</tr>
+		</tbody>
+	</table>
+</script>

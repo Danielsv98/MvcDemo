@@ -180,6 +180,10 @@ fieldset .btn-primary {
 	margin-right: auto;
 }
 
+form label:not(.form-check-label) {
+	font-weight: bold;
+}
+
 /* Validation */
 .form-control-feedback {
 	display: none;
