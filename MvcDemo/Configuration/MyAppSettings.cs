@@ -14,5 +14,7 @@ namespace MvcDemo.Configuration
 		public string EmailPassword { get; set; }
 		public string SmtpServer { get; set; }
 		public int SmtpPort { get; set; }
+		public string ReCaptchaUrl { get; set; }
+		public string ReCaptchaKey { get; set; }
 	}
 }
