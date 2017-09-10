@@ -20,7 +20,7 @@
 
 	function loadStackOverflowQuestions(settings) {
 
-		var url = "https://api.stackexchange.com/2.2/questions?page=1&pagesize=5&site=stackoverflow";
+		var url = stackOverflowApi + "questions?page=1&pagesize=5&site=stackoverflow";
 
 		if (settings != null) {
 			for (var i = 0; i < settings.length; i++)
@@ -74,7 +74,7 @@
 
 	function loadStackOverflowUsers(settings) {
 		$.ajax({
-			url: "https://api.stackexchange.com/2.2/users?page=1&pagesize=5&order=desc&sort=reputation&site=stackoverflow",
+			url: stackOverflowApi + "users?page=1&pagesize=5&order=desc&sort=reputation&site=stackoverflow",
 			type: "GET",
 			dataType: "json",
 			cache: false,
@@ -101,7 +101,7 @@
 
 	function loadGithubRepositories(settings) {
 		$.ajax({
-			url: "https://api.github.com/users/Danielsv98/repos",
+			url: gitHubApi + "users/Danielsv98/repos",
 			type: "GET",
 			dataType: "json",
 			cache: false,
@@ -122,7 +122,7 @@
 
 	function getWidgetSettings(widgetId, callback) {
 		$.ajax({
-			url: "http://localhost:59634/api/widget/" + widgetId + "/settings",
+			url:  demoApi + "api/widget/" + widgetId + "/settings",
 			type: "GET",
 			dataType: "json",
 			cache: false,
@@ -138,7 +138,7 @@
 	function saveWidgetSettings(widgetId, settings, callback) {
 
 		$.ajax({
-			url: 'http://localhost:59634/api/widget/' + widgetId + '/settings',
+			url: demoApi + 'api/widget/' + widgetId + '/settings',
 			type: "PUT",
 			contentType: 'application/json',
 			data: JSON.stringify(settings),

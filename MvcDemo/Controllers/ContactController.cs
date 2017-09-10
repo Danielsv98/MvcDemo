@@ -16,7 +16,7 @@ namespace MvcDemo.Controllers
 
 		[HttpPost]
 		public IActionResult Index(ContactViewModel viewModel) {
-				return View();
+			return View();
 		}
 	}
 }

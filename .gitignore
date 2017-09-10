@@ -7,3 +7,4 @@
 /MvcDemo/obj
 /MvcDemo/wwwroot/lib
 /MvcDemo/MvcDemo.csproj.user
+/MvcDemo/appsettings.*.json

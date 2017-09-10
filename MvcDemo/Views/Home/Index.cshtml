@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MvcDemo.ViewModels.HomeViewModel
+
+@{
     ViewData["Title"] = "Home";
 }
 
@@ -70,5 +72,10 @@
 </script>
 
 @section Scripts {
+	<script type="text/javascript">
+		var stackOverflowApi = '@Model.Settings.StackOverflowApi';
+		var gitHubApi = '@Model.Settings.GitHubApi';
+		var demoApi = '@Model.Settings.DemoApi';
+	</script>
 	<script src="~/js/home.js" asp-append-version="true"></script>
 }
