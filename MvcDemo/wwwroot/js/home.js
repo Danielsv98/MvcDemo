@@ -43,7 +43,7 @@
 				ko.applyBindings(widgetViewModel, widget);
 			},
 			error: function () {
-				alert('Error');
+				$("#errorMessage").show();
 			}
 		});
 	}
@@ -94,7 +94,7 @@
 				ko.applyBindings(widgetViewModel, widget[0]);
 			},
 			error: function () {
-				alert('Error');
+				$("#errorMessage").show();
 			}
 		});
 	}
@@ -115,7 +115,7 @@
 				ko.applyBindings(widgetViewModel, widget[0]);
 			},
 			error: function () {
-				alert('Error');
+				$("#errorMessage").show();
 			}
 		});
 	}
@@ -130,7 +130,7 @@
 				callback(settings);
 			},
 			error: function () {
-				alert('Error');
+				$("#errorMessage").show();
 			}
 		});
 	}
@@ -146,7 +146,7 @@
 				callback();
 			},
 			error: function () {
-				alert('Error');
+				$("#errorMessage").show();
 			}
 		});
 	}
