@@ -11,5 +11,8 @@ namespace MvcDemo.Configuration
 		public string StackOverflowApi { get; set; }
 		public string GitHubApi { get; set; }
 		public string Email { get; set; }
+		public string EmailPassword { get; set; }
+		public string SmtpServer { get; set; }
+		public int SmtpPort { get; set; }
 	}
 }
