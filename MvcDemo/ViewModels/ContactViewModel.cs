@@ -25,5 +25,7 @@ namespace MvcDemo.ViewModels
 
 		[Required(ErrorMessage = "The message field can not be empty")]
 		public string Message { get; set; }
+
+		public bool Success { get; set; }
 	}
 }

@@ -4,6 +4,16 @@
 	ViewData["Title"] = "Contact";
 }
 
+@if (Model.Success)
+{
+	<div id="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<strong>Thanks!</strong> We'll contact you as soon as possible.
+	</div>
+}
+
 <div class="row">
 	<div class="col-md-4">
 		<img src="~/images/contact.png" class="img-fluid" />

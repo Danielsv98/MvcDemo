@@ -11,12 +11,20 @@ namespace MvcDemo.Controllers
     {
         public IActionResult Index()
         {
-			return View();
+			return View(new ContactViewModel { Success = false });
         }
 
 		[HttpPost]
 		public IActionResult Index(ContactViewModel viewModel) {
-			return View();
+
+			if (this.ModelState.IsValid == false)
+				return View(viewModel);
+
+			// Send email
+
+			// Clear form
+			this.ModelState.Clear();
+			return View(new ContactViewModel { Success = true });
 		}
 	}
 }
