@@ -1,10 +1,11 @@
 ﻿$(function () {
 	// Constants
 	var soQuestionsWidgetId = 1;
+	var soUsersWidgetId = 2;
 
 	// Initializations
 	getWidgetSettings(soQuestionsWidgetId, loadStackOverflowQuestions);
-	getWidgetSettings(2, loadStackOverflowUsers);
+	getWidgetSettings(soUsersWidgetId, loadStackOverflowUsers);
 	getWidgetSettings(3, loadGithubRepositories);
 	setupModals();
 
@@ -96,6 +97,30 @@
 			error: function () {
 				$("#errorMessage").show();
 			}
+		});
+	}
+
+	function saveStackOverflowUsersSettings(e) {
+		e.preventDefault();
+
+		var modal = $('#so-questions-modal');
+
+		var category = modal.find('#selCategory').val();
+		var order = modal.find('input[name=order]:checked').val();
+
+		var settings = [
+			{
+				"settingName": "sort",
+				"settingValue": category
+			},
+			{
+				"settingName": "order",
+				"settingValue": order
+			}
+		];
+
+		saveWidgetSettings(soQuestionsWidgetId, settings, function () {
+			loadStackOverflowQuestions(settings);
 		});
 	}
 

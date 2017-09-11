@@ -4,6 +4,19 @@
     ViewData["Title"] = "Home";
 }
 
+<div class="d-flex justify-content-around">
+	<img class="logos" src="~/images/HTML5_Logo.png" alt="MvcLogos" />
+	<img class="logos" src="~/images/css3_logo.png" alt="MvcLogos" />
+	<img class="logos" src="~/images/javascript_logo.png" alt="MvcLogos" />
+	<img class="logos" src="~/images/Jquery_logo.png" alt="MvcLogos" />
+	<img class="logos" src="~/images/bootstrap_logo.png" alt="MvcLogos" />
+	<img class="logos" src="~/images/VisualStudio_logo.png" alt="MvcLogos" />
+	<img class="logos" src="~/images/SQL_logo.png" alt="MvcLogos" />
+	<img class="logos" src="~/images/knockout_logo.png" alt="MvcLogos" />
+	<img class="logos" src="~/images/github_logo.png" alt="MvcLogos" />
+	<img class="logos" src="~/images/Postman_logo.png" alt="MvcLogos" />
+	</div>
+
 <div class="row">
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
 		@await Html.PartialAsync("_StackOverflowQuestionsWidget")
@@ -49,27 +62,6 @@
 		</div>
 	</div>
 </div>
-
-<script type="text/html" id="so-users-template">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>User Name</th>
-				<th class="ED_Users_Age">Age</th>
-				<th class="ED_Users_Reputation">Reputation</th>
-			</tr>
-		</thead>
-		<tbody data-bind="foreach: items">
-			<tr>
-				<td class="ellipse">
-					<a data-bind="text: display_name, attr: { href: link }" target="_blank"></a>
-				</td>
-				<td class="ED_Users_Age" data-bind="text: age"></td>
-				<td class="ED_Users_Reputation" data-bind="text: reputation"></td>
-			</tr>
-		</tbody>
-	</table>
-</script>
 
 @section Scripts {
 	<script type="text/javascript">
