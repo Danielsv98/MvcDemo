@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MvcDemo.Configuration;
 using MvcDemo.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace MvcDemo.Controllers
 {
@@ -14,13 +15,15 @@ namespace MvcDemo.Controllers
 		#region Members
 
 		private MyAppSettings _settings;
+		private ILogger<HomeController> _logger;
 
 		#endregion
 
 		#region Constructors
 
-		public HomeController(IOptions<MyAppSettings> settings) {
+		public HomeController(IOptions<MyAppSettings> settings, ILogger<HomeController> logger) {
 			_settings = settings.Value;
+			_logger = logger;
 		}
 
 		#endregion
@@ -31,8 +34,16 @@ namespace MvcDemo.Controllers
         {
 			var viewModel = new HomeViewModel { Settings = _settings };
 
-			return View(viewModel);
-        }
+			try
+			{
+				return View(viewModel);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
+		}
 
 		public IActionResult About()
 		{

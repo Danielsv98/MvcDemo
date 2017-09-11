@@ -39,9 +39,9 @@ namespace MvcDemo
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+			loggerFactory.AddFile("Logs/ts-{Date}.txt");
 
-            if (env.IsDevelopment())
+			if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
