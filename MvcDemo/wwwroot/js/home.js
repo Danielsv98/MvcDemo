@@ -38,7 +38,7 @@
 		$('#so-users-modal').find('.btn-primary').click(saveStackOverflowUsersSettings);
 	}
 
-	// Setup Settings Modal
+	// Stack Overflow Questions Widget
 	function setupQuestionsModal() {
 		var modal = $(this);
 		if (questionsSettings != null) {
@@ -111,6 +111,7 @@
 		});
 	}
 
+	// Stack Overflow Users Widget
 	function loadStackOverflowUsers(settings) {
 
 		var url = stackOverflowApi + "users?page=1&pagesize=5&site=stackoverflow";
@@ -169,6 +170,7 @@
 		});
 	}
 
+	// Github Repositories Widget
 	function loadGithubRepositories(settings) {
 		$.ajax({
 			url: gitHubApi + "users/Danielsv98/repos",
@@ -190,6 +192,7 @@
 		});
 	}
 
+	// Web API Settings
 	function getWidgetSettings(widgetId, callback) {
 		$.ajax({
 			url:  demoApi + "api/widget/" + widgetId + "/settings",
