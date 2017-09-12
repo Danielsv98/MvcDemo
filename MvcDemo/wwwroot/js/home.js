@@ -4,9 +4,11 @@
 	var soUsersWidgetId = 2;
 
 	// Variables
-	var questionsSettings = null;
+	var questionsSettings;
+	var questionsViewModel;
 
 	// Initializations
+	setupWidgets();
 	getWidgetSettings(soQuestionsWidgetId, loadStackOverflowQuestions);
 	getWidgetSettings(soUsersWidgetId, loadStackOverflowUsers);
 	getWidgetSettings(3, loadGithubRepositories);
@@ -14,10 +16,19 @@
 
 	// View Models
 	function WidgetViewModel() {
-		this.items = [];
+		this.loading = ko.observable(true);
+		this.items = ko.observableArray();
 	}
 
 	// Private Methods
+	function setupWidgets()
+	{
+		// Questions widget
+		questionsViewModel = new WidgetViewModel();
+		var widget = $('#so_questions')[0];
+		ko.applyBindings(questionsViewModel, widget);
+	}
+
 	function setupModals() {
 		// Open modals
 		$('#so-questions-modal').on('show.bs.modal', setupQuestionsModal);
@@ -48,6 +59,8 @@
 
 	function loadStackOverflowQuestions(settings) {
 
+		questionsViewModel.loading(true);
+
 		questionsSettings = settings;
 		var url = stackOverflowApi + "questions?page=1&pagesize=5&site=stackoverflow";
 
@@ -62,14 +75,11 @@
 			dataType: "json",
 			cache: false,
 			success: function (data) {
-				var widgetViewModel = new WidgetViewModel();
 				if (data != null && data.items != null) {
-					widgetViewModel.items = data.items;
+					questionsViewModel.items(data.items);
 				}
 
-				var widget = $('#so_questions')[0];
-				ko.cleanNode(widget);
-				ko.applyBindings(widgetViewModel, widget);
+				questionsViewModel.loading(false);
 			},
 			error: function () {
 				$("#errorMessage").show();

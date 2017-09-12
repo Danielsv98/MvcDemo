@@ -5,8 +5,9 @@
 			<img src="~/images/settings.png" alt="settings">
 		</a>
 	</div>
-	<div class="card-block" data-bind="template: { name: 'so-questions-template' }">
-		<img class="loading" src="~/images/loading.gif" alt="Loading" />
+	<div class="card-block">
+		<img data-bind="visible: loading" class="loading" src="~/images/loading.gif" alt="Loading" />
+		<div data-bind="visible: !loading(), template: { name: 'so-questions-template' }"></div>
 	</div>
 </div>
 
