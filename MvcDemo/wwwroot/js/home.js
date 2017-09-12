@@ -2,16 +2,19 @@
 	// Constants
 	var soQuestionsWidgetId = 1;
 	var soUsersWidgetId = 2;
+	var countriesFilterWidgetId = 4;
 
 	// Variables
 	var questionsSettings;
 	var questionsViewModel;
+	var countriesViewModel;
 
 	// Initializations
 	setupWidgets();
 	getWidgetSettings(soQuestionsWidgetId, loadStackOverflowQuestions);
 	getWidgetSettings(soUsersWidgetId, loadStackOverflowUsers);
 	getWidgetSettings(3, loadGithubRepositories);
+	getWidgetSettings(countriesFilterWidgetId, loadCountries);
 	setupModals();
 
 	// View Models
@@ -27,15 +30,22 @@
 		questionsViewModel = new WidgetViewModel();
 		var widget = $('#so_questions')[0];
 		ko.applyBindings(questionsViewModel, widget);
+
+		// Countries widget
+		countriesViewModel = new WidgetViewModel();
+		widget2 = $('#countries_filter')[0];
+		ko.applyBindings(countriesViewModel, widget2);
 	}
 
 	function setupModals() {
 		// Open modals
 		$('#so-questions-modal').on('show.bs.modal', setupQuestionsModal);
+		$('#countries-filter-modal').on('show.bs.modal', setupCountriesModal);
 
 		// Save buttons
 		$('#so-questions-modal').find('.btn-primary').click(saveStackOverflowQuestionsSettings);
 		$('#so-users-modal').find('.btn-primary').click(saveStackOverflowUsersSettings);
+		$('#countries-filter-modal').find('.btn-primary').click(saveCountriesSettings);
 	}
 
 	// Stack Overflow Questions Widget
@@ -189,6 +199,73 @@
 			error: function () {
 				$("#errorMessage").show();
 			}
+		});
+	}
+
+	// Countries Filter Widget
+	function setupCountriesModal() {
+		var modal = $(this);
+		if (countriesSettings != null) {
+			for (var i = 0; i < countriesSettings.length; i++) {
+				var setting = countriesSettings[i];
+				switch (setting.settingName) {
+					case 'region':
+						modal.find('#selRegion').val(setting.settingValue);
+						break;
+				}
+			}
+		}
+	}
+
+	function loadCountries(settings) {
+
+		countriesViewModel.loading(true);
+
+		countriesSettings = settings;
+		var url = countriesApi + "regionalbloc/";
+
+		if (settings != null && settings.length > 0) {
+			url += settings[0].settingValue;
+		}
+		else
+		{
+			url += "eu";
+		}
+
+		$.ajax({
+			url: url,
+			type: "GET",
+			dataType: "json",
+			cache: false,
+			success: function (data) {
+				if (data != null) {
+					countriesViewModel.items(data);
+				}
+
+				countriesViewModel.loading(false);
+			},
+			error: function () {
+				$("#errorMessage").show();
+			}
+		});
+	}
+
+	function saveCountriesSettings(e) {
+		e.preventDefault();
+
+		var modal = $('#countries-filter-modal');
+
+		var region = modal.find('#selRegion').val();
+
+		var settings = [
+			{
+				"settingName": "region",
+				"settingValue": region
+			}
+		];
+
+		saveWidgetSettings(countriesFilterWidgetId, settings, function () {
+			loadCountries(settings);
 		});
 	}
 

@@ -17,14 +17,7 @@
 		@await Html.PartialAsync("_GitHubRepositoriesWidget")
 	</div>
 	<div class="col-sm-12 col-md-6 mt-2 mb-2">
-		<div class="widget card">
-			<div class="card-header">
-				Quote
-			</div>
-			<div class="card-block">
-				<img class="loading" src="~/images/loading.gif" alt="Loading" />
-			</div>
-		</div>
+		@await Html.PartialAsync("_CountriesFilterWidget")
 	</div>
 </div>
 <div class="row">
@@ -55,6 +48,7 @@
 		var stackOverflowApi = '@Model.Settings.StackOverflowApi';
 		var gitHubApi = '@Model.Settings.GitHubApi';
 		var demoApi = '@Model.Settings.DemoApi';
+		var countriesApi = '@Model.Settings.CountriesApi';
 	</script>
 	<script src="~/js/home.js" asp-append-version="true"></script>
 }

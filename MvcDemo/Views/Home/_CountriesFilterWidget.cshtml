@@ -1,0 +1,67 @@
+﻿<div class="widget card" id="countries_filter">
+	<div class="card-header">
+		Countries
+		<a class="widget-icon" href="#" data-toggle="modal" data-target="#countries-filter-modal">
+			<img src="~/images/settings.png" alt="settings">
+		</a>
+	</div>
+	<div class="card-block" style="overflow-y: auto;">
+		<img data-bind="visible: loading" class="loading" src="~/images/loading.gif" alt="Loading" />
+		<div data-bind="visible: !loading(), template: { name: 'countries-filter-template' }"></div>
+	</div>
+</div>
+
+@* Settings Modal *@
+<div class="modal fade" id="countries-filter-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="selRegion">Region</label>
+						<select id="selRegion" class="form-control">
+							<option selected></option>
+							<option value="EU">European Union</option>
+							<option value="PA">Pacific Alliance</option>
+							<option value="AU">African Union</option>
+							<option value="NAFTA">North American Free Trade Agreement</option>
+						</select>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+@* Template *@
+
+<script type="text/html" id="countries-filter-template">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th class="">Region</th>
+				<th class="">Area</th>
+				<th class="">Population</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: items">
+			<tr>
+				<td class="ellipse" data-bind="text: name"></td>
+				<td class="" data-bind="text: region"></td>
+				<td class="" data-bind="text: area"></td>
+				<td class="" data-bind="text: population"></td>
+			</tr>
+		</tbody>
+	</table>
+</script>

@@ -9,6 +9,7 @@ namespace MvcDemo.Configuration
     {
 		public string DemoApi { get; set; }
 		public string StackOverflowApi { get; set; }
+		public string CountriesApi { get; set; }
 		public string GitHubApi { get; set; }
 		public string Email { get; set; }
 		public string EmailPassword { get; set; }
