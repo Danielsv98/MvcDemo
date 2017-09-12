@@ -10,13 +10,13 @@
 	@RenderSection("Head", required: false)
 </head>
 <body>		
-
+	@* Nav Bar *@
 	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<a class="navbar-brand" href="~/">
-			<img src="~/images/logo.png" width="60" height="40" alt="logo">
+			<img src="~/images/logo.png" width="50" height="50" alt="logo">
 		</a>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
@@ -33,6 +33,41 @@
 		</div>
 	</nav>
 
+	@* Banner *@
+	<div class="banner d-flex justify-content-around">
+		<a href="#" title="HTML 5" class="hidden-md-down">
+			<img class="logos" src="~/images/HTML5_Logo.png" alt="" />
+		</a>
+		<a href="#" title="CSS 3" class="hidden-md-down">
+			<img class="logos" src="~/images/css3_logo.png" alt="" />
+		</a>
+		<a href="#" title="JavaScript" class="hidden-md-down">
+			<img class="logos" src="~/images/javascript_logo.png" alt="" />
+		</a>
+		<a href="#" title="Jquery">
+			<img class="logos" src="~/images/Jquery_logo.png" alt="" />
+		</a>
+		<a href="#" title="Boostrap">
+			<img class="logos" src="~/images/bootstrap_logo.png" alt="" />
+		</a>
+		<a href="#" title="Visual Studio">
+			<img class="logos" src="~/images/VisualStudio_logo.png" alt="" />
+		</a>
+		<a href="#" title="SQL" class="hidden-md-down">
+			<img class="logos" src="~/images/SQL_logo.png" alt="" />
+		</a>
+		<a href="#" title="Knockout" class="hidden-md-down">
+			<img class="logos" src="~/images/knockout_logo.png" alt="" />
+		</a>
+		<a href="#" title="GitHub">
+			<img class="logos" src="~/images/github_logo.png" alt="" />
+		</a>
+		<a href="#" title="Postman">
+			<img class="logos" src="~/images/Postman_logo.png" alt="" />
+		</a>
+	</div>
+
+	@* Body *@
 	<div class="container body-content">
 		<div id="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -44,10 +79,12 @@
 		@RenderBody()
 	</div>
 
+	@* Footer *@
 	<footer class="footer">
 		<span class="text-muted mx-3">2017</span>
 	</footer>
 
+	@* Scripts *@
 	<script src="~/lib/jquery/dist/jquery.js"></script>
 	<script src="~/lib/knockout/dist/knockout.js"></script>
 	<script src="~/lib/tether/dist/js/tether.js"></script>
@@ -56,6 +93,17 @@
 	<script src="~/lib/moment/locale/en-gb.js"></script> 
 	<script src="~/js/site.js" asp-append-version="true"></script>
 		
+	<script type="text/javascript">
+		 window.onload = function () {
+			 try {
+				 TagCanvas.Start('myCanvas');
+			 } catch (e) {
+				 // something went wrong, hide the canvas container
+				 document.getElementById('myCanvasContainer').style.display = 'none';
+			 }
+		 };
+	</script>
+
 	@RenderSection("Scripts", required: false)
 </body>
 </html>

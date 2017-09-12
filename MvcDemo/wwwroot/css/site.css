@@ -4,8 +4,7 @@
 	width: 100%;
 	top: 0;
 	z-index: 10;
-	background-color: #5bc0de;
-	background: linear-gradient(rgb(91, 192, 222), #bff0ff);
+	background-color: rgb(115, 203, 230);
 	box-shadow: 8px 8px 6px -6px #999;
 	padding: 0;
 	height: 50px;
@@ -17,7 +16,7 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-	color: #000000;
+	color: #fff;
 	display: block;
 	padding: 0 12px;
 	height: 50px;
@@ -26,10 +25,12 @@
 }
 
 .nav-item.active {
-	background-color: #a2dbec;
-	background: linear-gradient(rgb(115, 203, 230), rgb(243, 247, 247));
-	box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+	background-color: rgba(33, 40, 113, 0.46);
 }
+
+	.nav-item.active > .nav-link {
+		color: #fff !important;
+	}
 
 .collapse.show {
 	display: block;
@@ -38,35 +39,37 @@
 }
 
 /* Tag Cloud */
-.d-flex .logos {
-	max-width: 80px;
+.banner {
+	padding: 50px 20px;
+	background: #fdfdfd;
+	border-bottom: 1px solid #f5f1f1;
+	box-shadow: 2px 5px 11px -9px rgba(0,0,0,0.3);
+}
+
+.banner .logos {
 	max-height: 100px;
 }
 
 @media (max-width: 991px) {
-	.d-flex .logos {
-		max-width: 60px;
+	.banner .logos {
 		max-height: 80px;
 	}
 }
 
 @media (max-width: 767px) {
-	.d-flex .logos {
-		max-width: 40px;
+	.banner .logos {
 		max-height: 60px;
 	}
 }
 
 @media (max-width: 453px) {
-	.d-flex .logos {
-		max-width: 30px;
+	.banner .logos {
 		max-height: 45px;
 	}
 }
 
 @media (max-width: 351px) {
-	.d-flex .logos {
-		max-width: 20px;
+	.banner .logos {
 		max-height: 25px;
 	}
 }
@@ -85,7 +88,7 @@
 
 .widget .card-header {
 	font-family: Georgia, 'Times New Roman', Times, serif;
-	background: linear-gradient(rgb(91, 192, 222), #bff0ff);
+	background-color:rgb(115, 203, 230);
 	border-top-right-radius: 0.20rem;
 	border-top-left-radius: 0.20rem;
 }
