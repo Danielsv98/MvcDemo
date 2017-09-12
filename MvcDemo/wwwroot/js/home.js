@@ -3,6 +3,9 @@
 	var soQuestionsWidgetId = 1;
 	var soUsersWidgetId = 2;
 
+	// Variables
+	var questionsSettings = null;
+
 	// Initializations
 	getWidgetSettings(soQuestionsWidgetId, loadStackOverflowQuestions);
 	getWidgetSettings(soUsersWidgetId, loadStackOverflowUsers);
@@ -16,12 +19,36 @@
 
 	// Private Methods
 	function setupModals() {
+		// Open modals
+		$('#so-questions-modal').on('show.bs.modal', setupQuestionsModal);
+
+		// Save buttons
 		$('#so-questions-modal').find('.btn-primary').click(saveStackOverflowQuestionsSettings);
 		$('#so-users-modal').find('.btn-primary').click(saveStackOverflowUsersSettings);
 	}
 
+	// Setup Settings Modal
+	function setupQuestionsModal() {
+		var modal = $(this);
+		if (questionsSettings != null) {
+			for (var i = 0; i < questionsSettings.length; i++) {
+				var setting = questionsSettings[i];
+				switch (setting.settingName) {
+					case 'sort':
+						modal.find('#selCategory').val(setting.settingValue);
+						break;
+
+					case 'order':
+						modal.find('input[name=order]').filter('[value="' + setting.settingValue + '"]').attr('checked', true);
+						break;
+				}
+			}
+		}
+	}
+
 	function loadStackOverflowQuestions(settings) {
 
+		questionsSettings = settings;
 		var url = stackOverflowApi + "questions?page=1&pagesize=5&site=stackoverflow";
 
 		if (settings != null) {
