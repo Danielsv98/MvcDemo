@@ -5,8 +5,9 @@
 			<img src="~/images/settings.png" alt="settings">
 		</a>
 	</div>
-	<div class="card-block" data-bind="template: { name: 'so-users-template' }">
-		<img class="loading" src="~/images/loading.gif" alt="Loading" />
+	<div class="card-block">
+		<img data-bind="visible: loading" class="loading" src="~/images/loading.gif" alt="Loading" />
+		<div data-bind="visible: !loading(), template: { name: 'so-users-template' }"></div>
 	</div>
 </div>
 
@@ -61,8 +62,8 @@
 		<thead>
 			<tr>
 				<th>User Name</th>
-				<th class="ED_Users_Age">Age</th>
-				<th class="ED_Users_Reputation">Reputation</th>
+				<th class="ed_Users_Age">Age</th>
+				<th class="ed_Users_Reputation">Reputation</th>
 			</tr>
 		</thead>
 		<tbody data-bind="foreach: items">
@@ -70,8 +71,8 @@
 				<td class="ellipse">
 					<a data-bind="text: display_name, attr: { href: link }" target="_blank"></a>
 				</td>
-				<td class="ED_Users_Age" data-bind="text: age"></td>
-				<td class="ED_Users_Reputation" data-bind="text: reputation"></td>
+				<td class="ed_Users_Age" data-bind="text: age"></td>
+				<td class="ed_Users_Reputation" data-bind="text: numeral(reputation).format('0,0')"></td>
 			</tr>
 		</tbody>
 	</table>

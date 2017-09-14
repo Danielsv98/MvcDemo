@@ -19,13 +19,10 @@
 	</div>
 }
 
-<div class="contactImage row">
-	<div class="col-md-4">
-		<img src="~/images/contact.png" class="img-fluid" />
-	</div>
-	<div class="col-md-8">
-		<form asp-action="Index" asp-controller="Contact" type="post">
-			<fieldset> 	
+<div class="row">
+	<div class="col-12">
+		<form asp-action="Index" asp-controller="Contact" type="post" class="contact-form">
+			<fieldset>
 				<div class="form-group required mt-2">
 					<label for="txtFullName">Full Name</label>
 					<div class="form-inline">

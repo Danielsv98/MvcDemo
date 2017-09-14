@@ -50,17 +50,17 @@
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th class="">Region</th>
-				<th class="">Area</th>
-				<th class="">Population</th>
+				<th class="ed_Countries_Region">Region</th>
+				<th class="ed_Countries_Area">Area Km<sup>2</sup></th>
+				<th class="ed_Countries_Population">Population</th>
 			</tr>
 		</thead>
 		<tbody data-bind="foreach: items">
 			<tr>
 				<td class="ellipse" data-bind="text: name"></td>
-				<td class="" data-bind="text: region"></td>
-				<td class="" data-bind="text: area"></td>
-				<td class="" data-bind="text: population"></td>
+				<td class="ed_Countries_Region" data-bind="text: region"></td>
+				<td class="ed_Countries_Area" data-bind="text: numeral(area).format('0,0')"></td>
+				<td class="ed_Countries_Population" data-bind="text: numeral(population).format('0,0')"></td>
 			</tr>
 		</tbody>
 	</table>

@@ -2,18 +2,24 @@
 	// Constants
 	var soQuestionsWidgetId = 1;
 	var soUsersWidgetId = 2;
+	var ghRepositoriesWidgetId = 3;
 	var countriesFilterWidgetId = 4;
 
 	// Variables
 	var questionsSettings;
 	var questionsViewModel;
+	var usersSettings;
+	var usersViewModel;
+	var repositoriesSettings;
+	var repositoriesViewModel;
+	var countriesSettings;
 	var countriesViewModel;
 
 	// Initializations
 	setupWidgets();
 	getWidgetSettings(soQuestionsWidgetId, loadStackOverflowQuestions);
 	getWidgetSettings(soUsersWidgetId, loadStackOverflowUsers);
-	getWidgetSettings(3, loadGithubRepositories);
+	getWidgetSettings(ghRepositoriesWidgetId, loadGithubRepositories);
 	getWidgetSettings(countriesFilterWidgetId, loadCountries);
 	setupModals();
 
@@ -31,21 +37,38 @@
 		var widget = $('#so_questions')[0];
 		ko.applyBindings(questionsViewModel, widget);
 
+		// Users widget
+		usersViewModel = new WidgetViewModel();
+		var widget2 = $('#so_users')[0];
+		ko.applyBindings(usersViewModel, widget2);
+
+		// Countries widget
+		repositoriesViewModel = new WidgetViewModel();
+		var widget3 = $('#gh_repos')[0];
+		ko.applyBindings(repositoriesViewModel, widget3);
+
 		// Countries widget
 		countriesViewModel = new WidgetViewModel();
-		widget2 = $('#countries_filter')[0];
-		ko.applyBindings(countriesViewModel, widget2);
+		var widget4 = $('#countries_filter')[0];
+		ko.applyBindings(countriesViewModel, widget4);
+
+
 	}
 
 	function setupModals() {
 		// Open modals
 		$('#so-questions-modal').on('show.bs.modal', setupQuestionsModal);
+		$('#so-users-modal').on('show.bs.modal', setupUsersModal);
+		$('#gh-repos-modal').on('show.bs.modal', setupRepositoriesModal);
 		$('#countries-filter-modal').on('show.bs.modal', setupCountriesModal);
+
 
 		// Save buttons
 		$('#so-questions-modal').find('.btn-primary').click(saveStackOverflowQuestionsSettings);
 		$('#so-users-modal').find('.btn-primary').click(saveStackOverflowUsersSettings);
+		$('#gh-repos-modal').find('.btn-primary').click(saveGihubRepositoriesSettings);
 		$('#countries-filter-modal').find('.btn-primary').click(saveCountriesSettings);
+
 	}
 
 	// Stack Overflow Questions Widget
@@ -122,8 +145,29 @@
 	}
 
 	// Stack Overflow Users Widget
+	function setupUsersModal() {
+		var modal = $(this);
+		if (usersSettings != null) {
+			for (var i = 0; i < usersSettings.length; i++) {
+				var setting = usersSettings[i];
+				switch (setting.settingName) {
+					case 'sort':
+						modal.find('#selCategory').val(setting.settingValue);
+						break;
+
+					case 'order':
+						modal.find('input[name=order]').filter('[value="' + setting.settingValue + '"]').attr('checked', true);
+						break;
+				}
+			}
+		}
+	}
+
 	function loadStackOverflowUsers(settings) {
 
+		usersViewModel.loading(true);
+
+		usersSettings = settings;
 		var url = stackOverflowApi + "users?page=1&pagesize=5&site=stackoverflow";
 
 		if (settings != null) {
@@ -137,18 +181,16 @@
 			dataType: "json",
 			cache: false,
 			success: function (data) {
-				var widgetViewModel = new WidgetViewModel();
 				if (data != null && data.items != null) {
 					$.each(data.items, function (index, item) {
 						if (item.age === undefined) {
 							item.age = '--';
 						}
 					});
-					widgetViewModel.items = data.items;
+					usersViewModel.items(data.items);
 				}
-				var widget = $('#so_users')[0];
-				ko.cleanNode(widget);
-				ko.applyBindings(widgetViewModel, widget);
+
+				usersViewModel.loading(false);
 			},
 			error: function () {
 				$("#errorMessage").show();
@@ -181,24 +223,70 @@
 	}
 
 	// Github Repositories Widget
+	function setupRepositoriesModal() {
+		var modal = $(this);
+		if (repositoriesSettings != null) {
+			for (var i = 0; i < repositoriesSettings.length; i++) {
+				var setting = repositoriesSettings[i];
+				switch (setting.settingName) {
+					case 'reposName':
+						modal.find('#reposName').val(setting.settingValue);
+						break;
+				}
+			}
+		}
+	}
+
 	function loadGithubRepositories(settings) {
+
+		repositoriesViewModel.loading(true);
+
+		repositoriesSettings = settings;
+
+		var url = gitHubApi + "users/";
+
+		if (settings != null && settings.length > 0) {
+			url += settings[0].settingValue;
+		}
+		else {
+			url += "Danielsv98";
+		}
+
+		url += "/repos";
+		
 		$.ajax({
-			url: gitHubApi + "users/Danielsv98/repos",
+			url: url,
 			type: "GET",
 			dataType: "json",
 			cache: false,
 			success: function (items) {
-				var widgetViewModel = new WidgetViewModel();
 				if (items != null) {
-					widgetViewModel.items = items;
+					repositoriesViewModel.items(items);
 				}
-
-				var widget = $('#gh_repos');
-				ko.applyBindings(widgetViewModel, widget[0]);
+				repositoriesViewModel.loading(false);
 			},
 			error: function () {
 				$("#errorMessage").show();
 			}
+		});
+	}
+
+	function saveGihubRepositoriesSettings(e) {
+		e.preventDefault();
+
+		var modal = $('#gh-repos-modal');
+
+		var reposName = modal.find('#reposName').val();
+
+		var settings = [
+			{
+				"settingName": "reposName",
+				"settingValue": reposName
+			}
+		];
+
+		saveWidgetSettings(ghRepositoriesWidgetId, settings, function () {
+			loadGithubRepositories(settings);
 		});
 	}
 
@@ -227,8 +315,7 @@
 		if (settings != null && settings.length > 0) {
 			url += settings[0].settingValue;
 		}
-		else
-		{
+		else {
 			url += "eu";
 		}
 
