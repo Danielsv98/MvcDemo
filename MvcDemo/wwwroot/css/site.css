@@ -212,8 +212,12 @@ form label:not(.form-check-label) {
 
 /* Media Queries */
 @media (max-width: 991px) {
-	.banner .logos {
-		max-height: 80px;
+	.banner #html5.logos {
+		display: none;
+	}
+
+	.banner #knockout.logos {
+		display: none;
 	}
 
 	.ed_Answer_Title {
@@ -226,9 +230,20 @@ form label:not(.form-check-label) {
 	}
 }
 
+@media (max-width: 891px) {
+	.banner #css3.logos {
+		display: none;
+	}
+}
+
 @media (max-width: 767px) {
-	.banner .logos {
-		max-height: 60px;
+	.banner #javascript.logos {
+		display: none;
+	}
+
+	.navbar .navbar-brand img {
+		width: 40px;
+		height: 40px;
 	}
 
 	.contact-form {
@@ -236,10 +251,31 @@ form label:not(.form-check-label) {
 	}
 }
 
-@media (max-width: 453px) {
-	.banner .logos {
-		max-height: 45px;
+@media (max-width: 667px) {
+	.banner #jquery.logos {
+		display: none;
 	}
+}
+
+@media (max-width: 567px) {
+	.banner #github.logos {
+		display: none;
+	}
+}
+
+
+@media (max-width: 453px) {
+	.banner {
+		padding: 50px 20px;
+	}
+		
+		.banner .logos {
+			max-height: 60px
+		}
+
+		.banner #postman.logos {
+			display: none;
+		}
 
 	.ed_Answer_Title {
 		width: 35%;
@@ -267,10 +303,6 @@ form label:not(.form-check-label) {
 }
 
 @media (max-width: 351px) {
-	.banner .logos {
-		max-height: 25px;
-	}
-
 	.ed_Answer_Title {
 		width: 28%;
 		text-align: center;
