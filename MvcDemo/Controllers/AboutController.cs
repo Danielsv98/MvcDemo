@@ -10,18 +10,19 @@ using Microsoft.Extensions.Logging;
 
 namespace MvcDemo.Controllers
 {
-    public class HomeController : Controller
+    public class AboutController : Controller
     {
 		#region Members
 
 		private MyAppSettings _settings;
-		private ILogger<HomeController> _logger;
+		private ILogger<AboutController> _logger;
 
 		#endregion
 
 		#region Constructors
 
-		public HomeController(IOptions<MyAppSettings> settings, ILogger<HomeController> logger) {
+		public AboutController(IOptions<MyAppSettings> settings, ILogger<AboutController> logger)
+		{
 			_settings = settings.Value;
 			_logger = logger;
 		}
@@ -31,18 +32,8 @@ namespace MvcDemo.Controllers
 		#region Actions
 
 		public IActionResult Index()
-        {
-			var viewModel = new HomeViewModel { Settings = _settings };
-
-			try
-			{
-				return View(viewModel);
-			}
-			catch (Exception ex)
-			{
-				_logger.LogError(ex.Message);
-				throw ex;
-			}
+		{
+			return View();
 		}
 
 		public IActionResult Error()

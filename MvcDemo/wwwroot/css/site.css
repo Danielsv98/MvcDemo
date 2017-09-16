@@ -1,6 +1,6 @@
 ﻿/* Navbar */
 .navbar {
-	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-family: 'Times New Roman';
 	width: 100%;
 	top: 0;
 	z-index: 10;
@@ -45,6 +45,10 @@
 	box-shadow: 8px 8px 6px -6px #999;
 }
 
+.navbar-toggler-right {
+	top: 0.25rem;
+}
+
 /* Tag Cloud */
 .banner {
 	padding: 50px 20px;
@@ -69,8 +73,8 @@
 }
 
 .widget .card-header {
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	background-color:rgb(115, 203, 230);
+	font-family: 'Times New Roman';
+	background-color: rgb(115, 203, 230);
 	border-top-right-radius: 0.20rem;
 	border-top-left-radius: 0.20rem;
 }
@@ -164,7 +168,7 @@
 }
 
 fieldset {
-	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-family: 'Times New Roman';
 	background-color: #f1f1f1;
 	padding: 0.01em 16px;
 	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
@@ -187,6 +191,29 @@ form label:not(.form-check-label) {
 	margin: 0 auto;
 	width: 600px;
 }
+
+/* CV */
+
+div .cv {
+	text-align: justify;
+	text-justify: inter-word;
+	font-family: 'Times New Roman';
+}
+
+div .cv-name > h1 {
+	box-shadow: 0px 8px 6px -6px #71949e;
+	text-align: center;
+}
+
+div .cv-headers {
+	background: rgba(212,228,239,0.99);
+	background: linear-gradient(to right, rgba(212,228,239,0.99) 0%, rgba(212,228,239,0.99) 43%, rgba(255,255,255,1) 70%, rgba(255,255,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#ffffff', GradientType=1 );
+}
+
+	div .cv-headers > h3 {
+		margin:0.25rem;
+	}
 
 /* Validation */
 .form-control-feedback {
@@ -249,6 +276,10 @@ form label:not(.form-check-label) {
 	.contact-form {
 		width: auto;
 	}
+
+	.cv-profile-photo {
+		display:none;
+	}
 }
 
 @media (max-width: 667px) {
@@ -284,6 +315,10 @@ form label:not(.form-check-label) {
 
 	.ed_answer_count {
 		text-align: center;
+	}
+
+	div .cv-info {
+		display: block;
 	}
 }
 

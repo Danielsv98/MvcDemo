@@ -265,9 +265,7 @@
 				}
 				repositoriesViewModel.loading(false);
 			},
-			error: function () {
-				$("#errorMessage").show();
-			}
+			error: mvcDemo.showError()
 		});
 	}
 
