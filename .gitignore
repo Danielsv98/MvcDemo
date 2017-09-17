@@ -10,3 +10,4 @@
 /MvcDemo/appsettings.*.json
 /MvcDemo/Logs
 /MvcDemo/wwwroot/images/Original
+/MvcDemo/Properties/PublishProfiles
