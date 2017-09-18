@@ -194,26 +194,34 @@ form label:not(.form-check-label) {
 
 /* CV */
 
-div .cv {
+.cv {
 	text-align: justify;
 	text-justify: inter-word;
 	font-family: 'Times New Roman';
 }
 
-div .cv-name > h1 {
+.cv-name > h1 {
 	box-shadow: 0px 8px 6px -6px #71949e;
 	text-align: center;
 }
 
-div .cv-headers {
+.cv-headers {
 	background: rgba(212,228,239,0.99);
 	background: linear-gradient(to right, rgba(212,228,239,0.99) 0%, rgba(212,228,239,0.99) 43%, rgba(255,255,255,1) 70%, rgba(255,255,255,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#ffffff', GradientType=1 );
 }
 
-	div .cv-headers > h3 {
+	.cv-headers > h3 {
 		margin:0.25rem;
 	}
+
+.cv li p {
+	margin: 0;
+}
+
+.cv li {
+	margin-bottom: 0px;
+}
 
 /* Validation */
 .form-control-feedback {

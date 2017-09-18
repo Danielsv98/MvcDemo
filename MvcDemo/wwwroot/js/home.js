@@ -114,9 +114,7 @@
 
 				questionsViewModel.loading(false);
 			},
-			error: function () {
-				$("#errorMessage").show();
-			}
+			error: mvcDemo.showError
 		});
 	}
 
@@ -192,9 +190,7 @@
 
 				usersViewModel.loading(false);
 			},
-			error: function () {
-				$("#errorMessage").show();
-			}
+			error: mvcDemo.showError
 		});
 	}
 
@@ -329,9 +325,7 @@
 
 				countriesViewModel.loading(false);
 			},
-			error: function () {
-				$("#errorMessage").show();
-			}
+			error: mvcDemo.showError
 		});
 	}
 
@@ -364,9 +358,7 @@
 			success: function (settings) {
 				callback(settings);
 			},
-			error: function () {
-				$("#errorMessage").show();
-			}
+			error: mvcDemo.showError
 		});
 	}
 
@@ -380,9 +372,7 @@
 			success: function (data) {
 				callback();
 			},
-			error: function () {
-				$("#errorMessage").show();
-			}
+			error: mvcDemo.showError
 		});
 	}
 });
