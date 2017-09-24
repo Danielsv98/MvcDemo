@@ -40,6 +40,9 @@
 				<li class="nav-item" is-active-route asp-controller="Contact" asp-action="Index">
 					<a class="nav-link" asp-controller="Contact" asp-action="Index">Contact</a>
 				</li>
+				<li class="nav-item" is-active-route asp-controller="Login" asp-action="Index">
+					<a class="nav-link" asp-controller="Login" asp-action="Index">Login</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -84,7 +87,7 @@
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
-			<strong>Error:</strong> We are investigating this issue.
+			<strong>Error:</strong> <span id="errorBody">We are investigating this issue.</span>
 		</div>
 
 		@RenderBody()

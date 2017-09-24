@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MvcDemo.Controllers
 {
-    public class AboutController : Controller
+    public class LoginController : Controller
     {
 		#region Members
 
@@ -20,7 +20,7 @@ namespace MvcDemo.Controllers
 
 		#region Constructors
 
-		public AboutController(ILogger<AboutController> logger)
+		public LoginController(ILogger<AboutController> logger)
 		{
 			_logger = logger;
 		}

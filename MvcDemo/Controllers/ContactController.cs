@@ -66,7 +66,14 @@ namespace MvcDemo.Controllers
 						   "Email : " + viewModel.Email + Environment.NewLine +
 						   "Message : " + viewModel.Message + Environment.NewLine;
 
-				smtpClient.Send(_settings.Email, _settings.Email, "Contact Form", body);
+				try
+				{
+					smtpClient.Send(_settings.Email, _settings.Email, "Contact Form", body);
+				}
+				catch (Exception ex)
+				{
+					_logger.LogError(ex.Message);
+				}
 
 				// Clear form
 				this.ModelState.Clear();
